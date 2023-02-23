@@ -15,7 +15,7 @@ This document will help you connect your local sublime text editor to remote ser
 
 Lets get another package/plugin installed.  It is **RemoteSubl**.  We follow the same steps as we have done for **Package Control**, except that it is now 2 step process.
 
-> - **STEP-A** Open Pacakage Control **TOP MENU >Tools > command Palette** and search for `install`.  Among various options (if there are) choose **Package Control : Install Package** and hit RETURN.  This will open Package Control Install search at the same location.![shown below](./images/PackageControl2.png)
+> - **STEP-A** Open Pacakage Control **TOP MENU >Tools > command Palette** and search for `install`.  Among various options (if there are) choose **Package Control : Install Package** and hit RETURN.  This will open Package Control Install search at the same location.![shown below](./images/PackageControl_2.png)
 
 > - **STEP-B** Search for **RemoteSubl**, then select it and install it.  Use your cursor keys to select between packages. You can check the package installation success in **TOP MENU > Sublime Text > Settings > Package Settings**
 
