@@ -1,23 +1,25 @@
 #### Guide to Connect Sublime Text to Linux Server.
 
-This document will help you connect your local sublime text editor to remote server (e.g. Xanadu UConn Health HPC).  This will enable you open your cluster scripts with all the syntax colours and other cool features in Sublime on your local machine.  When you save the changes, the changes will be saved on the cluster file. The material here is a modification of contents from this page (https://data36.com/sublime-text-data-science-remote-server/)
+This document will help you connect your local sublime text editor to remote server (e.g. Xanadu UConn Health HPC).  This will enable you open your cluster scripts with all the syntax colours and other cool features of Sublime on your local machine.  When you make and save changes to a file, the changes will be synced and saved on the cluster file. The material here is a modification of contents from this page (https://data36.com/sublime-text-data-science-remote-server/)
 
 #### STEP1.
 > - Get sublime text (https://www.sublimetext.com/) and install on your local machine.
+
 > - Open sublime from your `Applications` folder/directory in Mac and for windows you can search for it.
-> - Sublime text has several plugins that can help you customise/modify it to suit your liking.  To do that you will need sublime package manager. So first we need to install sublime package control (manager). Go to **TOP MENU >Tools > command Palette** and search for **Package Control**. The moment you will type first few characters it will show you a list of options.  Please select `Package Control: Install Package`using your cursor key. As shown in ![figure](./images/PackageControl_1.png). Once selected hit RETURN on your keyboard.  
 
-*NOTE: Installation progress will be at the left bottom of the opened TAB for a few moments.  In most cases installations are instant so you will not see the progress.* ![Install Progress status bar](./images/ProgressBar.png)
+> - Sublime text has several plugins that can help you customise/modify it to suit your liking.  To do that you will need sublime package manager.  So first we need to install sublime package control (manager) plugin.  Go to **TOP MENU >Tools > command Palette** and search for **Package Control**. The moment you will type first few characters it will show you a list of options.  Please select `Package Control: Install Package`using your cursor keys. As shown in ![figure](./images/PackageControl_1.png). Once selected hit RETURN on your keyboard.  
 
-> - Check for installation is executed properly.  For this search for package name listed in **TOP MENU > Sublime Text > Settings > Package Settings**. `Package Control` should be listed here otherwise the plugin installation has failed and you have to resolve the issue.
+*NOTE: Installation progress will be at the left bottom of the open TAB.  In most cases installations are instant so you will not see the progress.* ![Install Progress status bar](./images/ProgressBar.png)
+
+> - Ensure plugin installation is executed properly.  For this search for installed package/plugin name in the list shown **TOP MENU > Sublime Text > Settings > Package Settings**. `Package Control` should be listed here otherwise the plugin installation has failed and you have to resolve the issue.
 
 ### STEP2 
 
-Lets get another package/plugin installed.  It is **RemoteSubl**.  We follow the same steps as we have done for **Package Control**, except that it is now 2 step process.
+Lets get, **RemoteSubl**, another package/plugin installed that we will need for this excercise.  We follow the same steps as we have done for **Package Control**, except that it is now 2 step process.
 
-> - **STEP-A** Open Pacakage Control **TOP MENU >Tools > command Palette** and search for `install`.  Among various options (if there are) choose **Package Control : Install Package** and hit RETURN.  This will open Package Control Install search at the same location.![shown below](./images/PackageControl_2.png)
+> > - **STEP-A** Open Pacakage Control **TOP MENU >Tools > command Palette** and search for `install`.  Among various options (if there are) choose **Package Control : Install Package** and hit RETURN.  This will open Package Control Install search at the same location.![shown below](./images/PackageControl_2.png)
 
-> - **STEP-B** Search for **RemoteSubl**, then select it and install it.  Use your cursor keys to select between packages. You can check the package installation success in **TOP MENU > Sublime Text > Settings > Package Settings**
+> > - **STEP-B** Search for **RemoteSubl**, then select it and install it.  Use your cursor keys to select between packages. You can check the package installation success in **TOP MENU > Sublime Text > Settings > Package Settings**
 
 #### STEP3 
 We are going to prepare our cluster/linux server/Xanadu account.  We will install `RemoteSubl` in there.
@@ -27,13 +29,13 @@ We are going to prepare our cluster/linux server/Xanadu account.  We will instal
 ```
 curl -o ./rmate https://raw.githubusercontent.com/aurora/rmate/master/rmate
 
-chmod 775 rmate
+chmod 755 rmate
 
 mv rmate sublime
 
 ```
 
-> Now move to your home directory buy simply executing `cd`.  Open your `.bashprofile` (if not there create one) using nano and add the following two lines in there and **SAVE** it.
+> Now move to your home directory buy simply executing `cd`.  Open your `.bash_profile` (if you donot have one then create one) using nano and add the following two lines in there and **SAVE** it.
 ```
 export PATH=~/auzar:$PATH.   # Add to your PATH environment variable
 alias sl=~/auzar/sublime     # creates a shortname "sl" for sublime
@@ -65,11 +67,11 @@ I know !!! this is a lot to type/remember on terminal.  Lets creat a shortcut or
 ```
 echo $SHELL
 ```
-> - If output is `/bin/zsh` .  Then open `.zshrc` file using nano and add the below line to it and save it.
+> - If output is `/bin/zsh` .  Then open `.zshrc` file using nano and add the below line to it and save it. If `.zshrc` doesnot exist then create one and add the commands given below.
 ```
 alias xanadu="ssh -R 52698:localhost:52698 <userID>@xanadu-submit-ext.cam.uchc.edu"
 ```
-> - If output is `/bin/bash` Then open `.bash_profile` file using nano and add the below line to it and save it.
+> - If output is `/bin/bash` Then open `.bash_profile` file using nano and add the below line to it and save it. If `.bash_profile` doesnot exist then create one and add the commands given below
 ```
 alias xanadu="ssh -R 52698:localhost:52698 <userID>@xanadu-submit-ext.cam.uchc.edu"
 ```
@@ -115,7 +117,7 @@ You are all set.  Next time when you open putty double click `xanadu` under save
 
 ### FINAL SHOW DOWN !!!!!!
 
-Login on the cluster mac users using shortcut `xanadu` in terminal and Windows folk by double clicking `xanadu` in putty.
+Mac Users, open a new terminal on Mac and login on the cluster using shortcut `xanadu` in terminal and Windows folk by double clicking `xanadu` in putty.
 
 Navigate to folder where you have your script, here I am using a nextflow script `helloworld.nf`. Once I am in the directory I will execute
 ```
@@ -126,13 +128,3 @@ This will open the `helloworld.nf` on my local machine in sublime text.  You can
 
 
 Source:  The instructions are modified from https://data36.com/sublime-text-data-science-remote-server/.
-
-
-
-
-
-
-
-
-
-
