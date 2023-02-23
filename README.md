@@ -25,7 +25,7 @@ We are going to prepare our cluster/linux server/Xanadu account.  We will instal
 > - To keep directory organised I would recommend create a directory `auzar` or anyother name of your choice. (Tools are Auzar in hindi language...so for fun)
 > - Change directory to `auzar` using `cd auzar` and then execute following commands
 ```
-curl -o . https://raw.githubusercontent.com/aurora/rmate/master/rmate
+curl -o ./rmate https://raw.githubusercontent.com/aurora/rmate/master/rmate
 
 chmod 775 rmate
 
